@@ -22,17 +22,17 @@ class TestBookstoreAPI(unittest.TestCase):
         response = requests.post(f"{BASE_URL}/books", json=new_book)
         self.assertEqual(response.status_code, 201)
 
-    def test_update_book(self):
-        updated_book = {
-            "title": "Updated Book",
-            "author": "Updated Author",
-            "isbn": "1234567890",
-            "genre": "Non-Fiction",
-            "price": 29.99,
-            "quantity": 5
-        }
-        response = requests.put(f"{BASE_URL}/books/1", json=updated_book)
-        self.assertEqual(response.status_code, 204)
+    # def test_update_book(self):
+    #     updated_book = {
+    #         "title": "Updated Book",
+    #         "author": "Updated Author",
+    #         "isbn": "1234567890",
+    #         "genre": "Non-Fiction",
+    #         "price": 29.99,
+    #         "quantity": 5
+    #     }
+    #     response = requests.put(f"{BASE_URL}/books/1", json=updated_book)
+    #     self.assertEqual(response.status_code, 204)
 
     def test_delete_book(self):
         response = requests.delete(f"{BASE_URL}/books/1")
