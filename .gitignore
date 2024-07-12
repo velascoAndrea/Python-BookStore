@@ -1,0 +1,11 @@
+# Ignorar la carpeta de entornos virtuales de Python
+venv/
+
+# Ignorar todos los archivos .zip
+*.zip
+
+# Otros ejemplos de exclusiones comunes
+__pycache__/
+*.pyc
+.DS_Store
+.idea/

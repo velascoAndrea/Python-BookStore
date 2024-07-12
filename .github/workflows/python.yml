@@ -1,0 +1,55 @@
+name: Python application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: Velazco2018$
+          MYSQL_DATABASE: bookstore
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flask sqlalchemy mysql-connector-python
+        pip install requests
+        pip install unittest
+
+    - name: Wait for MySQL
+      run: |
+        sudo apt-get install -y netcat
+        while ! nc -z localhost 3306; do   
+          sleep 1
+        done
+
+    - name: Run tests
+      env:
+        FLASK_APP: app.py
+      run: |
+        python -m unittest discover -s tests
