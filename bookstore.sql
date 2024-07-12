@@ -1,8 +1,8 @@
-CREATE DATABASE bookstore;
-
+CREATE DATABASE IF NOT EXISTS bookstore;
 USE bookstore;
 
-CREATE TABLE books (
+
+CREATE TABLE IF NOT EXISTS  books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE books (
     quantity INT
 );
 
-CREATE TABLE transactions (
+CREATE TABLE IF NOT EXISTS  transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     book_id INT,
     transaction_type ENUM('sale', 'restock') NOT NULL,
