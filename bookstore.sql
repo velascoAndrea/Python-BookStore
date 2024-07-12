@@ -18,5 +18,5 @@ CREATE TABLE IF NOT EXISTS  transactions (
     transaction_type ENUM('sale', 'restock') NOT NULL,
     quantity INT NOT NULL,
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (book_id) REFERENCES books(id)
+    FOREIGN KEY (book_id) REFERENCES book(id)
 );
