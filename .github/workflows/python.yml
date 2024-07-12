@@ -48,6 +48,7 @@ jobs:
 
     - name: Initialize database
       run: |
+        mysql -h 127.0.0.1 -u root -pVelazco2018$ -e "CREATE DATABASE IF NOT EXISTS bookstore;"
         mysql -h 127.0.0.1 -u root -pVelazco2018$ bookstore < bookstore.sql
 
     - name: Start Flask server
