@@ -48,14 +48,14 @@ jobs:
 
     - name: Set up Flask app
       run: |
-        export FLASK_APP=app.py
+        export FLASK_APP=main.py
         flask db upgrade
 
     - name: Start Flask server
       run: |
         nohup flask run --host=0.0.0.0 &
       env:
-        FLASK_APP: app.py
+        FLASK_APP: main.py
         FLASK_ENV: development
 
     - name: Run tests
